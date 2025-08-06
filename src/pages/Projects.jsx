@@ -39,7 +39,7 @@ const Projects = () => {
           key={currentImageIndex}
           src={images[currentImageIndex]} 
           alt={`${title} - Image ${currentImageIndex + 1}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -295,15 +295,6 @@ const Projects = () => {
                     <Github size={18} />
                     <span>Code</span>
                   </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
-                  >
-                    <ExternalLink size={18} />
-                    <span>Demo</span>
-                  </a>
                 </div>
               </motion.div>
             ))}
@@ -408,15 +399,6 @@ const Projects = () => {
                   >
                     <Github size={16} />
                     <span>Code</span>
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-gray-700 hover:text-primary-600 transition-colors duration-200 text-sm"
-                  >
-                    <ExternalLink size={16} />
-                    <span>Demo</span>
                   </a>
                 </div>
               </motion.div>

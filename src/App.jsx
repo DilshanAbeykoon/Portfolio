@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
+import CursorBubbles from './components/CursorBubbles'
 import Home from './pages/Home'
 import About from './pages/About'
 import Education from './pages/Education'
@@ -15,6 +17,8 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-white text-gray-900">
+        <CursorBubbles />
+        <ScrollToTop />
         <Navbar />
         <main className="pt-16">
           <Routes>
