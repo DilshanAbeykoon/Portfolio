@@ -1,169 +1,203 @@
 import { motion } from 'framer-motion'
-import { Brain, Code, Coffee, BookOpen } from 'lucide-react'
+import { MapPin, Award, Target, Heart } from 'lucide-react'
 
 const About = () => {
-  const interests = [
-    { icon: Brain, title: 'Machine Learning', description: 'Building intelligent systems' },
-    { icon: Code, title: 'Programming', description: 'Creating efficient algorithms' },
-    { icon: Coffee, title: 'Coffee', description: 'Fuel for creativity' },
-    { icon: BookOpen, title: 'Research', description: 'Exploring new AI frontiers' },
-  ]
-
-  const timeline = [
-    {
-      year: '2022-2024',
-      title: 'HND in Computer Science with AI',
-      description: 'Completed Higher National Diploma in Computer Science with Artificial Intelligence at NIBM with an impressive 3.6 GPA, building a strong foundation in AI and ML concepts.'
-    },
-    {
-      year: '2023',
-      title: 'First Commercial Project',
-      description: 'Successfully delivered my first commercial project at Ruhunu Foods PVT Ltd in Kundasale, applying AI solutions to real-world business challenges and gaining valuable industry experience.'
-    },
-    {
-      year: 'Aug 2024',
-      title: 'ML Internship at Engenia Solutions',
-      description: 'Secured a Machine Learning Internship opportunity at Engenia Solutions Australia, working on cutting-edge AI projects and expanding my practical ML expertise.'
-    },
-    {
-      year: '2024-2025',
-      title: 'Final Year Degree & Career Advancement',
-      description: 'Started final year degree at Coventry University UK while being promoted to Junior Machine Learning Engineer at Engenia Solutions after successful 6-month internship performance.'
-    },
-    {
-      year: '2025',
-      title: 'First Class Honours Graduate',
-      description: 'Successfully completed degree from Coventry University UK with First Class Honours, now advancing expertise as a Junior ML Engineer in cutting-edge AI technologies.'
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
     }
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  }
+
+  const technologies = [
+    'Python/TensorFlow',
+    'PyTorch/Keras',
+    'Computer Vision',
+    'Natural Language Processing',
+    'Deep Learning',
+    'Machine Learning',
+    'Data Science',
+    'AWS/Cloud',
+    'React.js/Node.js',
+    'MongoDB/PostgreSQL',
+    'Docker/Kubernetes',
+    'Git/GitHub'
   ]
 
   return (
-    <div className="section-padding">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen bg-white py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Get to know the person behind the code
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center"
-          >
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary-400 to-blue-600 p-1">
-                <div className="w-full h-full rounded-full overflow-hidden">
-                  <img 
-                    src="/dilshan-profile.jpg" 
-                    alt="Dilshan Abeykoon - Machine Learning Engineer" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <motion.div
-                className="absolute -top-4 -right-4 w-8 h-8 bg-green-500 rounded-full"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
+          <motion.div variants={itemVariants} className="mb-8">
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl">
+              <img 
+                src="/dilshan-profile.jpg" 
+                alt="Dilshan Abeykoon" 
+                className="w-full h-full object-cover"
               />
             </div>
-          </motion.div>
-
-          {/* Bio */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <h2 className="text-3xl font-bold mb-6">Hello! I'm Dilshan</h2>
-            <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-              <p>
-                I'm a passionate Machine Learning Engineer with a love for creating intelligent, 
-                impactful solutions. My journey into AI and ML started with curiosity about how 
-                machines can learn and has evolved into a deep passion for solving complex problems 
-                through artificial intelligence.
-              </p>
-              <p>
-                When I'm not training models or analyzing data, you can find me exploring new 
-                AI technologies, contributing to open source projects, or enjoying a good cup 
-                of coffee while reading about the latest developments in machine learning and AI.
-              </p>
-              <p>
-                I believe in building AI solutions that are not only technically sound but also 
-                ethical and beneficial to society. Every project is an opportunity to learn 
-                something new and push the boundaries of what's possible with AI.
-              </p>
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              My Portfolio
+            </h1>
+            <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
+              <MapPin size={16} />
+              <span>Sri Lanka</span>
             </div>
           </motion.div>
-        </div>
-
-        {/* Interests */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">What I Love</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {interests.map((interest, index) => (
-              <motion.div
-                key={interest.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                className="card p-6 text-center hover:scale-105 transition-transform duration-300"
-              >
-                <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <interest.icon className="w-8 h-8 text-primary-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{interest.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{interest.description}</p>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Main Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">My Journey</h2>
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary-200 dark:bg-primary-800"></div>
-            {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 1.2 + index * 0.2 }}
-                className={`relative flex items-center mb-8 ${
-                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                }`}
-              >
-                <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8'}`}>
-                  <div className="card p-6">
-                    <div className="text-2xl font-bold text-primary-600 mb-2">{item.year}</div>
-                    <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{item.description}</p>
-                  </div>
+          {/* Left Column - Main Content */}
+          <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Greetings, I'm <strong>Dilshan Abeykoon</strong>, a seasoned machine learning engineer with expertise 
+                in the dynamic AI industry. My expertise lies in crafting cutting-edge, full-stack AI applications 
+                and deep learning models for diverse platforms, utilizing the power of modern ML frameworks. 
+                I take immense pride in my work, striving to develop solutions that are not only efficient but also 
+                innovative, catering to the diverse needs of clients globally.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Having successfully delivered projects to satisfied clients worldwide, I've gained valuable experience 
+                collaborating with individuals from various cultures. My journey has taken me from local tech companies 
+                to international platforms, eventually leading me to work with global AI companies. This diverse 
+                exposure has enriched my understanding of different perspectives and enhanced my ability to adapt to 
+                varied work environments.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed text-lg">
+                I am passionate about continuous learning and growth, both in my professional and personal life. 
+                Beyond my role as a machine learning engineer, I am deeply committed to advancing AI technology 
+                and contributing to the development of ethical AI solutions. My dedication to learning is reflected 
+                in my constant pursuit of knowledge to deepen my understanding of artificial intelligence and improve 
+                my technical practices.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed text-lg">
+                I am enthusiastic about exploring new opportunities that challenge and expand my skills. The prospect 
+                of working in an environment that fosters continuous learning and skill development aligns with my 
+                belief that there is always room for improvement. I invite open communication and collaboration, 
+                welcoming opportunities to contribute to meaningful projects that make a positive impact on the world.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed text-lg">
+                Throughout my journey, I've specialized in various technologies, honing my skills to adapt to the 
+                ever-evolving landscape of AI development. I am confident that my experience and commitment to growth 
+                make me an asset to any team or project. Feel free to connect, and let's explore possibilities together.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed text-lg">
+                In addition to my professional endeavors, I am also passionate about sharing knowledge and contributing 
+                to the AI community. Teaching and empowering others in the tech community is a passion of mine, and 
+                I find great joy in contributing to the learning journey of fellow developers and aspiring ML engineers.
+              </p>
+            </div>
+
+            {/* Technologies Section */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Over the time I've specialized in many technologies
+              </h3>
+              <p className="text-gray-600 mb-8">Some of them are...</p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {technologies.map((tech, index) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-blue-600">▹</span>
+                    <span className="text-gray-700 font-medium">
+                      {tech}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Profile Image and Stats */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="relative">
+              <div className="w-full aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/dilshan-profile.jpg" 
+                  alt="Dilshan Abeykoon - Profile" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Stats/Highlights */}
+            <div className="space-y-6">
+              <div className="bg-gray-50 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Award className="text-blue-600" size={24} />
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    Education
+                  </h4>
                 </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white dark:border-gray-900"></div>
-              </motion.div>
-            ))}
-          </div>
+                <p className="text-gray-600">
+                  First Class Honours Graduate from Coventry University UK in Computer Science with AI
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Target className="text-blue-600" size={24} />
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    Current Role
+                  </h4>
+                </div>
+                <p className="text-gray-600">
+                  Junior Machine Learning Engineer at Engenia Solutions Australia
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Heart className="text-blue-600" size={24} />
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    Passion
+                  </h4>
+                </div>
+                <p className="text-gray-600">
+                  Creating intelligent AI solutions and sharing knowledge with the community
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

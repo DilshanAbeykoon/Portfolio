@@ -24,7 +24,7 @@ const Projects = () => {
 
     if (!images || images.length === 0) {
       return (
-        <div className="w-full h-64 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600 flex items-center justify-center">
+        <div className="w-full h-64 rounded-lg overflow-hidden bg-gray-100 shadow-lg border border-gray-200 flex items-center justify-center">
           <div className="text-center">
             <div className="text-6xl mb-2">🖼️</div>
             <div className="text-sm text-gray-500">No images available</div>
@@ -34,7 +34,7 @@ const Projects = () => {
     }
 
     return (
-      <div className="relative w-full h-64 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 shadow-lg border border-gray-200 dark:border-gray-600">
+      <div className="relative w-full h-64 rounded-lg overflow-hidden bg-gray-100 shadow-lg border border-gray-200">
         <motion.img 
           key={currentImageIndex}
           src={images[currentImageIndex]} 
@@ -48,7 +48,7 @@ const Projects = () => {
             e.target.nextElementSibling.style.display = 'flex';
           }}
         />
-        <div className="absolute inset-0 bg-gray-100 dark:bg-gray-700 flex items-center justify-center hidden">
+        <div className="absolute inset-0 bg-gray-100 flex items-center justify-center hidden">
           <div className="text-center">
             <div className="text-6xl mb-2">🖼️</div>
             <div className="text-sm text-gray-500">Image not available</div>
@@ -218,7 +218,7 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A showcase of my work, from web applications to APIs and everything in between
           </p>
         </motion.div>
@@ -241,7 +241,7 @@ const Projects = () => {
                 className="card p-8 hover:scale-[1.02] transition-transform duration-300"
               >
                 <div className="flex items-start gap-6 mb-6">
-                  <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 flex-shrink-0 shadow-md border border-gray-200 dark:border-gray-600">
+                  <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 shadow-md border border-gray-200">
                     <ImageCarousel 
                       images={project.images || [project.image]} 
                       title={project.title} 
@@ -253,8 +253,8 @@ const Projects = () => {
                       <span className="text-sm text-primary-600 font-medium">{project.category}</span>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         project.status === 'Completed' 
-                          ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
-                          : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-yellow-100 text-yellow-700'
                       }`}>
                         {project.status}
                       </span>
@@ -262,7 +262,7 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -278,7 +278,7 @@ const Projects = () => {
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 px-3 py-1 rounded-full text-sm"
+                      className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-sm"
                     >
                       {tech}
                     </span>
@@ -290,7 +290,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                    className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
                   >
                     <Github size={18} />
                     <span>Code</span>
@@ -299,7 +299,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
+                    className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
                   >
                     <ExternalLink size={18} />
                     <span>Demo</span>
@@ -325,12 +325,12 @@ const Projects = () => {
                 placeholder="Search projects..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
               />
             </div>
             
             <div className="flex items-center gap-4">
-              <Filter className="text-gray-600 dark:text-gray-400" size={20} />
+              <Filter className="text-gray-600" size={20} />
               <div className="flex gap-2 flex-wrap">
                 {categories.map((category) => (
                   <button
@@ -339,7 +339,7 @@ const Projects = () => {
                     className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                       selectedCategory === category
                         ? 'bg-primary-600 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                   >
                     {category}
@@ -367,7 +367,7 @@ const Projects = () => {
                 className="card p-6 hover:scale-[1.02] transition-transform duration-300"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700 flex-shrink-0 shadow-md border border-gray-200 dark:border-gray-600">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 shadow-md border border-gray-200">
                     <ImageCarousel 
                       images={project.images || [project.image]} 
                       title={project.title} 
@@ -379,7 +379,7 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-gray-700 mb-4 text-sm leading-relaxed">
                   {project.description.slice(0, 120)}...
                 </p>
                 
@@ -387,13 +387,13 @@ const Projects = () => {
                   {project.technologies.slice(0, 3).map((tech, i) => (
                     <span
                       key={i}
-                      className="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 px-2 py-1 rounded text-xs"
+                      className="bg-primary-50 text-primary-700 px-2 py-1 rounded text-xs"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="text-xs text-gray-500 dark:text-gray-400 px-2 py-1">
+                    <span className="text-xs text-gray-500 px-2 py-1">
                       +{project.technologies.length - 3} more
                     </span>
                   )}
@@ -404,7 +404,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 text-sm"
+                    className="flex items-center gap-1 text-gray-700 hover:text-primary-600 transition-colors duration-200 text-sm"
                   >
                     <Github size={16} />
                     <span>Code</span>
@@ -413,7 +413,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 text-sm"
+                    className="flex items-center gap-1 text-gray-700 hover:text-primary-600 transition-colors duration-200 text-sm"
                   >
                     <ExternalLink size={16} />
                     <span>Demo</span>
@@ -425,7 +425,7 @@ const Projects = () => {
           
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-600 dark:text-gray-400 text-lg">
+              <p className="text-gray-600 text-lg">
                 No projects found matching your criteria.
               </p>
             </div>
@@ -439,14 +439,14 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 1.5 }}
           className="mt-20 text-center"
         >
-          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20">
+          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50">
             <h2 className="text-2xl font-bold mb-4">Have a Project in Mind?</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
               I'm always excited to work on new and challenging projects. 
               Let's collaborate and bring your ideas to life!
             </p>
             <motion.a
-              href="mailto:john@example.com"
+              href="mailto:dilshanyasantha1999@gmail.com"
               className="btn-primary inline-flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

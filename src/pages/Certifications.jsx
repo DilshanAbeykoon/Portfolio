@@ -75,7 +75,7 @@ const Certifications = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Certifications</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Professional certifications that validate my expertise and commitment to continuous learning
           </p>
         </motion.div>
@@ -95,7 +95,7 @@ const Certifications = () => {
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               className="card p-6 text-center"
             >
-              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 {typeof stat.icon === 'string' ? (
                   <span className="text-2xl">{stat.icon}</span>
                 ) : (
@@ -103,7 +103,7 @@ const Certifications = () => {
                 )}
               </div>
               <div className="text-3xl font-bold text-primary-600 mb-2">{stat.value}</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
+              <div className="text-sm text-gray-600">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -126,15 +126,15 @@ const Certifications = () => {
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-2">{cert.title}</h3>
                   <p className="text-primary-600 font-medium mb-1">{cert.issuer}</p>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Calendar size={14} />
                       <span>Issued: {cert.date}</span>
                     </div>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       cert.status === 'Active'
-                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
-                        : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-yellow-100 text-yellow-700'
                     }`}>
                       {cert.status}
                     </span>
@@ -143,18 +143,18 @@ const Certifications = () => {
               </div>
 
               {/* Description */}
-              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 {cert.description}
               </p>
 
               {/* Skills */}
               <div className="mb-6">
-                <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">Skills Validated</h4>
+                <h4 className="text-sm font-semibold text-gray-600 mb-3">Skills Validated</h4>
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 px-3 py-1 rounded-full text-sm"
+                      className="bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-sm"
                     >
                       {skill}
                     </span>
@@ -163,10 +163,10 @@ const Certifications = () => {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                 <div className="text-sm">
-                  <p className="text-gray-600 dark:text-gray-400">Credential ID: <span className="font-mono">{cert.credential}</span></p>
-                  <p className="text-gray-600 dark:text-gray-400">Expires: {cert.expiryDate}</p>
+                  <p className="text-gray-600">Credential ID: <span className="font-mono">{cert.credential}</span></p>
+                  <p className="text-gray-600">Expires: {cert.expiryDate}</p>
                 </div>
                 <a
                   href={cert.credentialUrl}
@@ -193,47 +193,47 @@ const Certifications = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="card p-6 text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">📚</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Currently Studying</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 Expanding knowledge in advanced AI/ML techniques and cloud technologies to stay current with industry trends.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm">
+                <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
                   Advanced ML
                 </span>
-                <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full text-sm">
+                <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">
                   Cloud Platforms
                 </span>
               </div>
             </div>
 
             <div className="card p-6 text-center">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🎯</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Next Goals</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 Planning to achieve cloud certifications and advanced AI/ML specializations to enhance technical expertise.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">
+                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
                   AWS Certifications
                 </span>
-                <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm">
+                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
                   Advanced TensorFlow
                 </span>
               </div>
             </div>
 
             <div className="card p-6 text-center">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🏆</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Achievement</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 Successfully completed 4 professional certification courses in 2024, building a strong foundation in technology and development.
               </p>
               <div className="text-primary-600 font-bold">
@@ -250,14 +250,14 @@ const Certifications = () => {
           transition={{ duration: 0.6, delay: 1.5 }}
           className="mt-20 text-center"
         >
-          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20">
+          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50">
             <h2 className="text-2xl font-bold mb-4">Validated Expertise</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
               These certifications represent my commitment to staying current with industry standards 
               and best practices. Ready to apply this knowledge to your next project?
             </p>
             <motion.a
-              href="mailto:john@example.com"
+              href="mailto:dilshanyasantha1999@gmail.com"
               className="btn-primary inline-flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

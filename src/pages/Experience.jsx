@@ -95,14 +95,14 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Experience</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             My professional journey and the impact I've made along the way
           </p>
         </motion.div>
 
         {/* Experience Timeline */}
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200 dark:bg-primary-800"></div>
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-200"></div>
           
           {experiences.map((exp, index) => (
             <motion.div
@@ -113,7 +113,7 @@ const Experience = () => {
               className="relative mb-8 ml-16"
             >
               {/* Timeline dot */}
-              <div className="absolute -left-10 top-6 w-4 h-4 bg-primary-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg"></div>
+              <div className="absolute -left-10 top-6 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
               
               <div className="card p-8 hover:shadow-xl transition-shadow duration-300">
                 {/* Header */}
@@ -124,18 +124,18 @@ const Experience = () => {
                       <div className="flex flex-wrap items-center gap-3 mb-2">
                         <h3 className="text-xl md:text-2xl font-bold text-primary-600">{exp.title}</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          exp.type === 'Full-time' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
-                          exp.type === 'Contract' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' :
-                          'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300'
+                          exp.type === 'Full-time' ? 'bg-green-100 text-green-700' :
+                          exp.type === 'Contract' ? 'bg-blue-100 text-blue-700' :
+                          'bg-orange-100 text-orange-700'
                         }`}>
                           {exp.type}
                         </span>
                       </div>
                       <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                        <Building size={18} className="text-gray-600 dark:text-gray-400" />
+                        <Building size={18} className="text-gray-600" />
                         {exp.company}
                       </h4>
-                      <div className="flex flex-wrap items-center gap-6 text-gray-600 dark:text-gray-400 mb-4">
+                      <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-4">
                         <div className="flex items-center gap-2">
                           <Calendar size={16} />
                           <span>{exp.duration}</span>
@@ -150,7 +150,7 @@ const Experience = () => {
                   
                   <button
                     onClick={() => toggleExpanded(index)}
-                    className="ml-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                    className="ml-4 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                     aria-label={expandedJob === index ? 'Collapse details' : 'Expand details'}
                   >
                     {expandedJob === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -158,18 +158,18 @@ const Experience = () => {
                 </div>
 
                 {/* Summary */}
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   {exp.summary}
                 </p>
 
                 {/* Technologies */}
                 <div className="mb-6">
-                  <h5 className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3">Technologies Used</h5>
+                  <h5 className="text-sm font-semibold text-gray-600 mb-3">Technologies Used</h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-3 py-1 rounded-full text-sm font-medium"
+                        className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium"
                       >
                         {tech}
                       </span>
@@ -188,13 +188,13 @@ const Experience = () => {
                   className="overflow-hidden"
                 >
                   {expandedJob === index && (
-                    <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="pt-6 border-t border-gray-200">
                       {/* Responsibilities */}
                       <div className="mb-6">
                         <h5 className="text-lg font-semibold mb-4">Key Responsibilities</h5>
                         <ul className="space-y-2">
                           {exp.responsibilities.map((responsibility, i) => (
-                            <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                            <li key={i} className="flex items-start gap-3 text-gray-700">
                               <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
                               <span>{responsibility}</span>
                             </li>
@@ -207,7 +207,7 @@ const Experience = () => {
                         <h5 className="text-lg font-semibold mb-4">Key Achievements</h5>
                         <ul className="space-y-2">
                           {exp.achievements.map((achievement, i) => (
-                            <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300">
+                            <li key={i} className="flex items-start gap-3 text-gray-700">
                               <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                               <span>{achievement}</span>
                             </li>
@@ -229,14 +229,14 @@ const Experience = () => {
           transition={{ duration: 0.6, delay: 1 }}
           className="mt-16 text-center"
         >
-          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20">
+          <div className="card p-8 bg-gradient-to-r from-primary-50 to-blue-50">
             <h2 className="text-2xl font-bold mb-4">Ready for New Challenges</h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
               I'm always excited to take on new projects and collaborate with amazing teams. 
               Let's discuss how I can contribute to your next big idea.
             </p>
             <motion.a
-              href="mailto:john@example.com"
+              href="mailto:dilshanyasantha1999@gmail.com"
               className="btn-primary inline-flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
