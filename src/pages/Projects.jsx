@@ -5,6 +5,20 @@ import { Github, ExternalLink, Search, Filter } from 'lucide-react'
 const Projects = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedProject, setSelectedProject] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeProjectModal()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [isModalOpen])
 
   // Image Carousel Component
   const ImageCarousel = ({ images, title }) => {
@@ -190,6 +204,29 @@ const Projects = () => {
         'Scalable solution for commercial beekeeping operations'
       ],
       images: ['/bee-detection-thermal.png', '/bee-detection-analysis.png']
+    },
+    {
+      id: 6,
+      title: 'Australian Women\'s Sports Data Extraction & Analysis',
+      description: 'A comprehensive data analysis project focused on Australian women\'s sports coverage using advanced web scraping and natural language processing techniques. The system automates sports news collection using Selenium for dynamic web scraping, implements state-of-the-art text classification using OpenAI Large Language Models, and performs sophisticated sentiment analysis through Hugging Face BERT models. Statistical significance is validated using ANOVA and Chi-square tests for robust analytical insights.',
+      image: '/australian-womens-sports-analysis.png',
+      category: 'AI & Machine Learning',
+      technologies: ['Selenium', 'OpenAI LLMs', 'Hugging Face BERT', 'Python', 'ANOVA', 'Chi-square Tests', 'Web Scraping', 'Sentiment Analysis', 'Statistical Analysis'],
+      github: 'https://github.com/dilshan-abeykoon/australian-womens-sports-analysis',
+      demo: 'https://womens-sports-analysis-demo.com',
+      featured: true,
+      status: 'Completed',
+      highlights: [
+        'Automated web scraping of sports news using Selenium for dynamic content extraction',
+        'Advanced text classification pipeline powered by OpenAI Large Language Models',
+        'Comprehensive sentiment analysis using pre-trained Hugging Face BERT models',
+        'Statistical validation through ANOVA and Chi-square hypothesis testing',
+        'Large-scale data processing and analysis of Australian women\'s sports coverage',
+        'Insights into media representation patterns and sentiment trends',
+        'Robust data pipeline for continuous monitoring and analysis',
+        'Evidence-based findings on sports media coverage disparities'
+      ],
+      images: ['/australian-womens-sports-analysis.png']
     }
   ]
 
@@ -206,6 +243,137 @@ const Projects = () => {
   })
 
   const featuredProjects = projects.filter(project => project.featured)
+
+  const openProjectModal = (project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+    document.body.style.overflow = 'hidden' // Prevent background scrolling
+  }
+
+  const closeProjectModal = () => {
+    setSelectedProject(null)
+    setIsModalOpen(false)
+    document.body.style.overflow = 'unset' // Restore scrolling
+  }
+
+  // Modal Component
+  const ProjectModal = ({ project, isOpen, onClose }) => {
+    if (!isOpen || !project) return null
+
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Modal Header */}
+          <div className="sticky top-0 bg-white border-b border-gray-200 p-6 z-10">
+            <div className="flex items-start justify-between">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">{project.title}</h2>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-primary-600 font-medium bg-primary-50 px-3 py-1 rounded-full">
+                    {project.category}
+                  </span>
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    project.status === 'Completed' 
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-yellow-100 text-yellow-700'
+                  }`}>
+                    {project.status}
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={onClose}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Modal Content */}
+          <div className="p-6">
+            {/* Project Images */}
+            <div className="mb-8">
+              <ImageCarousel 
+                images={project.images || [project.image]} 
+                title={project.title} 
+              />
+            </div>
+
+            {/* Description */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">About This Project</h3>
+              <p className="text-gray-700 leading-relaxed">{project.description}</p>
+            </div>
+
+            {/* Key Highlights */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Highlights</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {project.highlights.map((highlight, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="w-2 h-2 bg-primary-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-sm text-gray-700 leading-relaxed">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technologies */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Technologies Used</h3>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Links */}
+            <div className="flex gap-4 pt-6 border-t border-gray-200">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200"
+              >
+                <Github size={20} />
+                <span>View Code</span>
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors duration-200"
+              >
+                <ExternalLink size={20} />
+                <span>Live Demo</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    )
+  }
 
   return (
     <div className="section-padding">
@@ -238,7 +406,8 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className="card p-8 hover:scale-[1.02] transition-transform duration-300"
+                className="card p-8 hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+                onClick={() => openProjectModal(project)}
               >
                 <div className="flex items-start gap-6 mb-6">
                   <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 shadow-md border border-gray-200">
@@ -291,10 +460,18 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-colors duration-200"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <Github size={18} />
                     <span>Code</span>
                   </a>
+                  <button
+                    onClick={() => openProjectModal(project)}
+                    className="flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                  >
+                    <ExternalLink size={18} />
+                    <span>View Details</span>
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -355,7 +532,8 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                className="card p-6 hover:scale-[1.02] transition-transform duration-300"
+                className="card p-6 hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+                onClick={() => openProjectModal(project)}
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 shadow-md border border-gray-200">
@@ -396,10 +574,18 @@ const Projects = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 text-gray-700 hover:text-primary-600 transition-colors duration-200 text-sm"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <Github size={16} />
                     <span>Code</span>
                   </a>
+                  <button
+                    onClick={() => openProjectModal(project)}
+                    className="flex items-center gap-1 bg-primary-600 text-white px-3 py-1 rounded hover:bg-primary-700 transition-colors duration-200 text-sm"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Details</span>
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -438,6 +624,13 @@ const Projects = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Project Detail Modal */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={isModalOpen} 
+        onClose={closeProjectModal} 
+      />
     </div>
   )
 }
