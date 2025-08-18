@@ -227,10 +227,33 @@ const Projects = () => {
         'Evidence-based findings on sports media coverage disparities'
       ],
       images: ['/australian-womens-sports-analysis.png']
+    },
+    {
+      id: 7,
+      title: 'EDA with LLaMA - Automated Exploratory Data Analysis',
+      description: 'An intelligent data analysis application that combines the power of Streamlit, Python data science libraries, and LLaMA 2 to provide automated exploratory data analysis (EDA) with natural language insights. This tool streamlines the data exploration process by automatically generating visualizations and leveraging LLaMA 2 to provide human-readable interpretations of patterns and anomalies in datasets.',
+      image: '/eda-llama-dashboard.png',
+      category: 'Data Science',
+      technologies: ['Python', 'Streamlit', 'Pandas', 'Matplotlib', 'Seaborn', 'LLaMA 2', 'Ollama', 'Data Visualization', 'Statistical Analysis'],
+      github: 'https://github.com/DilshanAbeykoon/EDA-with-llama',
+      demo: 'https://eda-llama-demo.com',
+      featured: true,
+      status: 'Completed',
+      highlights: [
+        'CSV file upload with multi-encoding support for robust data handling',
+        'Automated generation of histograms with kernel density estimation',
+        'Box plots for effective outlier detection in various data distributions',
+        'Correlation heatmaps revealing relationships between dataset variables',
+        'LLaMA 2 integration for AI-powered data insights and summaries',
+        'Comprehensive missing value detection and data quality assessment',
+        'Modular architecture with separation of visualization and AI components',
+        'Optimized performance handling for large datasets with progress indicators'
+      ],
+      images: ['/eda-llama-dashboard.png', '/eda-llama-analysis.png']
     }
   ]
 
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'Mobile', 'AI & Machine Learning', 'IoT & Automation']
+  const categories = ['All', 'Full Stack', 'Frontend', 'Backend', 'Mobile', 'AI & Machine Learning', 'IoT & Automation', 'Data Science']
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
