@@ -54,13 +54,26 @@ const Certifications = () => {
       skills: ['Python', 'Programming', 'Data Structures', 'OOP', 'Automation'],
       status: 'Active',
       expiryDate: 'Lifetime'
+    },
+     {
+      title: 'Docker Basics for DevOps',
+      issuer: 'KodeKloud',
+      date: 'Aug 2025',
+      credential: 'KODEKLOUD-DOCKER-2025',
+      credentialUrl: 'https://coursera.org/share/5ddac06c35625a7d4a91e203e44b1774',
+      description: 'Comprehensive course on Docker containerization technology, covering image creation, container management, and orchestration with Kubernetes.',
+      logo: '',
+      color: 'from-blue-400 to-green-400',
+      skills: ['Docker', 'Containerization'],
+      status: 'Active',
+      expiryDate: 'Lifetime'
     }
   ]
 
   const stats = [
-    { label: 'Total Certifications', value: '4', icon: Award },
-    { label: 'Active Credentials', value: '4', icon: CheckCircle },
-    { label: 'Coursera Courses', value: '4', icon: '📚' },
+    { label: 'Total Certifications', value: '5', icon: Award },
+    { label: 'Active Credentials', value: '5', icon: CheckCircle },
+    { label: 'Coursera Courses', value: '5', icon: '📚' },
     { label: 'This Year', value: '4', icon: Calendar }
   ]
 
