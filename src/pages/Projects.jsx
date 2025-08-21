@@ -250,6 +250,29 @@ const Projects = () => {
         'Optimized performance handling for large datasets with progress indicators'
       ],
       images: ['/eda-llama-dashboard.png', '/eda-llama-analysis.png']
+    },
+    {
+      id: 8,
+      title: 'RAG-Based Coaching App',
+      description: 'A Retrieval-Augmented Generation (RAG) powered coaching platform designed to connect users with the most suitable life, finance, business, or specialized coaches based on their input. The system leverages advanced NLP techniques to understand user prompts, retrieve relevant knowledge, and match them with either a single coach or a tailored combination of coaches that best fit their needs.',
+      image: '/rag-coaching-app.jpg',
+      category: 'AI & Machine Learning',
+      technologies: ['Retrieval-Augmented Generation (RAG)', 'Natural Language Processing', 'Vector Search', 'Recommendation Systems', 'React.js', 'Node.js', 'Python', 'Large Language Models'],
+      github: 'https://github.com/dilshan-abeykoon/rag-coaching-app',
+      demo: 'https://rag-coaching-demo.com',
+      featured: true,
+      status: 'In Progress',
+      highlights: [
+        'Personalized coach matching using semantic search and LLM-based reasoning',
+        'Centralized coaching hub integrating multiple categories (life, finance, business, fitness)',
+        'RAG architecture combining vector search with generative AI for context-aware suggestions',
+        'Scalable design accommodating new coaching domains and knowledge bases seamlessly',
+        'User-centric experience with natural language interface for describing goals',
+        'Advanced retrieval mechanisms to match coaches based on expertise and user needs',
+        'Hybrid recommendation system balancing user preferences with coach specializations',
+        'Contextual understanding of complex coaching requirements across multiple domains'
+      ],
+      images: ['/rag-coaching-app.jpg']
     }
   ]
 
