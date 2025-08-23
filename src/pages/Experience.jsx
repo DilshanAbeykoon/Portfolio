@@ -8,7 +8,7 @@ const Experience = () => {
   const experiences = [
     {
       title: 'Junior Machine Learning Engineer',
-      company: 'Engenia Solutions Pty. Ltd',
+      company: 'Broodbox.ai',
       location: 'Victoria, Australia',
       duration: 'Feb 2025 - Present',
       type: 'Full-time',
@@ -32,7 +32,7 @@ const Experience = () => {
     },
     {
       title: 'Machine Learning Engineer - Intern',
-      company: 'Engenia Solutions Pty. Ltd',
+      company: 'Broodbox.ai',
       location: 'Victoria, Australia',
       duration: 'Aug 2024 - Feb 2025',
       type: 'Internship',

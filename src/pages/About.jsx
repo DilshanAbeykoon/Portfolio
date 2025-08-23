@@ -181,7 +181,7 @@ const About = () => {
                   </h4>
                 </div>
                 <p className="text-gray-600">
-                  Junior Machine Learning Engineer at Engenia Solutions Australia
+                  Junior Machine Learning Engineer at Broodbox.ai Australia
                 </p>
               </div>
 
